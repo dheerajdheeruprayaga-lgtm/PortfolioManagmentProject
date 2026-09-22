@@ -10,11 +10,11 @@ public class Holding {
 
     // Constructor
     public Holding(String holdingId,
-                   Asset asset,
+                   Stock stock,
                    int quantity) {
 
         this.holdingId = holdingId;
-        this.asset = asset;
+        this.asset = stock;
         this.quantity = quantity;
     }
 
