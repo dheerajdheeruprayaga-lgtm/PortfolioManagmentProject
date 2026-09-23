@@ -10,7 +10,7 @@ public class Holding {
 
     // Constructor
     public Holding(String holdingId,
-                   Stock stock,
+                   Asset stock,
                    int quantity) {
 
         this.holdingId = holdingId;
@@ -20,7 +20,11 @@ public class Holding {
 
     // Getters
 
-    public String getHoldingId() {
+    public Holding(String stockHoldingId, Stock stock, int quantity2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getHoldingId() {
         return holdingId;
     }
 
