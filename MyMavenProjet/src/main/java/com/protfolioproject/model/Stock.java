@@ -1,42 +1,47 @@
 package com.protfolioproject.model;
 
-public class Stock
-{
-	private String stockid;
-	private String stockname;
-	private double Price;
-	
-	public Stock(String stockid, String stockname, double Price, double currentPrice)
-	{
-		this.stockid=stockid;
-		this.stockname=stockname;
-		this.Price=Price;
-	}
+public class Stock extends Asset {
 
-	public String getStockid() {
-		return stockid;
-	}
+    private double currentPrice;
 
-	public void setStockid(String stockid) {
-		this.stockid = stockid;
-	}
+    // Default constructor - required for Jackson
+    public Stock() {
+        super();
+    }
 
-	public String getStockname() {
-		return stockname;
-	}
+    // Parameterized constructor
+    public Stock(String assetId,
+                 String assetName,
+                 double purchasePrice,
+                 double currentPrice) {
 
-	public void setStockname(String stockname) {
-		this.stockname = stockname;
-	}
+        super(assetId, assetName, purchasePrice);
+        this.currentPrice = currentPrice;
+    }
 
-	public double getPrice() {
-		return Price;
-	}
+    // Method overriding
+    @Override
+    public double calculateCurrentValue() {
+        return currentPrice;
+    }
 
-	public void setPrice(double price) {
-		Price = price;
-	}
+    // Getter
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
 
-	
-    
+    // Setter
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "Asset ID='" + getAssetId() + '\'' +
+                ", Asset Name='" + getAssetName() + '\'' +
+                ", Purchase Price=" + getPurchasePrice() +
+                ", Current Price=" + currentPrice +
+                '}';
+    }
 }

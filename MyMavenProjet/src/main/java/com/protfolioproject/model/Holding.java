@@ -3,28 +3,22 @@ package com.protfolioproject.model;
 public class Holding {
 
     private String holdingId;
-
     private Asset asset;
-
     private int quantity;
 
-    // Constructor
-    public Holding(String holdingId,
-                   Asset stock,
-                   int quantity) {
+    // Default constructor - required for Jackson
+    public Holding() {
+    }
 
+    // Parameterized constructor
+    public Holding(String holdingId, Asset asset, int quantity) {
         this.holdingId = holdingId;
-        this.asset = stock;
+        this.asset = asset;
         this.quantity = quantity;
     }
 
     // Getters
-
-    public Holding(String stockHoldingId, Stock stock, int quantity2) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getHoldingId() {
+    public String getHoldingId() {
         return holdingId;
     }
 
@@ -36,15 +30,26 @@ public class Holding {
         return quantity;
     }
 
+    // Setters - required for Jackson
+    public void setHoldingId(String holdingId) {
+        this.holdingId = holdingId;
+    }
+
+    public void setAsset(Asset asset) {
+        this.asset = asset;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     // Calculate total current value
     public double getCurrentValue() {
-
         return asset.calculateCurrentValue() * quantity;
     }
 
     @Override
     public String toString() {
-
         return "Holding{" +
                 "Holding ID='" + holdingId + '\'' +
                 ", Asset=" + asset +
