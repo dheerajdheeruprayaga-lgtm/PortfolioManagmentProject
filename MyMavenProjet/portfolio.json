@@ -1,0 +1,17 @@
+[ {
+  "userid" : "007",
+  "name" : "dheeraj",
+  "email" : "dheeraj@email.com",
+  "holdings" : [ {
+    "holdingId" : "10101",
+    "asset" : {
+      "type" : "stock",
+      "assetId" : "102321",
+      "assetName" : "tcs",
+      "purchasePrice" : 100002.0,
+      "currentPrice" : 10001.0
+    },
+    "quantity" : 23,
+    "currentValue" : 230023.0
+  } ]
+} ]

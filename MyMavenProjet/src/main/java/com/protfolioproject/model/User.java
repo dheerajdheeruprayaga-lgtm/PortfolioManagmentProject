@@ -32,9 +32,9 @@ public class User {
 
 
     // Add Holding
-    public void addHolding(Holding holding) {
+    public void addHolding(Holding mfHolding) {
 
-        holdings.add(holding);
+        holdings.add(mfHolding);
     }
 
 
@@ -117,4 +117,10 @@ public class User {
 
         this.holdings = holdings;
     }
+
+
+	public <Holding> void addHolding(Holding mfHolding) {
+		// TODO Auto-generated method stub
+		
+	}
 }

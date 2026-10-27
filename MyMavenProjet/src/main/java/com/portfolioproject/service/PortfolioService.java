@@ -1,11 +1,12 @@
 package com.portfolioproject.service;
 
-import com.protfolioproject.model.User;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.portfolioproject.exception.InvalidStockException;
+import com.portfolioproject.exception.UserNotFoundException;
+import com.protfolioproject.model.User;
 public class PortfolioService {
 
     private Map<String, User> users = new HashMap<>();
@@ -26,22 +27,45 @@ public class PortfolioService {
 
 
     // Get User by ID
-    public User getUser(String userid) {
-
-        return users.get(userid);
-    }
-
+//    public User getUser(String userid) {
+//
+//        return users.get(userid);
+//    }
+    public User getUser(String userid) throws UserNotFoundException 
+    {
+        User user = users.get(userid);
+        if (user == null)
+        {
+            throw new UserNotFoundException("User not found: " + userid);
+        }
+        return user;    
+     }
 
     // Get all users
-    public Collection<User> getAllUsers() {
-
+    public Collection<User> getAllUsers() 
+    {
         return users.values();
     }
-    public void loadUsers(Collection<User> loadedUsers) {
-
-        for (User user : loadedUsers) {
-
+    public void loadUsers(Collection<User> loadedUsers) 
+    {
+        for (User user : loadedUsers) 
+        {
             users.put(user.getUserid(), user);
+        }
+    }
+    public void validateStock(int quantity, double price)
+            throws InvalidStockException {
+
+        if (quantity <= 0) {
+            throw new InvalidStockException(
+                "Stock quantity must be greater than zero."
+            );
+        }
+
+        if (price <= 0) {
+            throw new InvalidStockException(
+                "Stock price must be greater than zero."
+            );
         }
     }
 }
